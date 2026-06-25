@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3000;
-const TOTAL_PRODUCTS = 1000;
+const TOTAL_PRODUCTS = 10000;
 
 // Load base products once and expand them up to TOTAL_PRODUCTS.
 const baseProducts = JSON.parse(
