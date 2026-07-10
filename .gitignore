@@ -5,3 +5,4 @@ dist-ssr
 coverage
 .vscode/*
 !.vscode/extensions.json
+.zed/*
