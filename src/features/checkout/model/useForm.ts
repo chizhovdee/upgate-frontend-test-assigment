@@ -9,7 +9,18 @@ import { FIELD_NAMES, INITIAL_STATE } from './constants';
 //   expire: (value: string) => null,
 // };
 
-export function useForm() {
+interface Form {
+  isDirty: boolean;
+  isValid: boolean;
+  getValue: (field: FieldName) => string;
+  setValue: (name: FieldName, value: string) => void;
+  setTouched: (name: FieldName) => void;
+  getError: (field: FieldName) => string | null;
+  shouldShowError: (name: FieldName) => boolean;
+  submit: () => void;
+}
+
+export function useForm(): Form {
   const [fields, setFields] = useState<FormState>(INITIAL_STATE);
   const [submitAttempted, setSubmitAttempted] = useState(false);
 

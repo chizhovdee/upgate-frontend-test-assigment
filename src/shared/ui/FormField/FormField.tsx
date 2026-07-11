@@ -9,6 +9,7 @@ interface FormFieldProps {
   onChange: (value: string) => void;
   onBlur: () => void;
   placeholder?: string;
+  type?: string;
 }
 
 export function FormField({
@@ -19,11 +20,13 @@ export function FormField({
   onChange,
   onBlur,
   placeholder,
+  type,
 }: FormFieldProps) {
   return (
     <label className={styles.field}>
       <span className={styles.label}>{label}</span>
       <input
+        type={type}
         className={clsx(styles.input, error && styles.inputError)}
         name={name}
         value={value}
