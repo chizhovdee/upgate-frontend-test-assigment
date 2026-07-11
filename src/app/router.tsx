@@ -10,6 +10,10 @@ const CheckoutPage = lazy(() =>
   import('features/checkout').then((module) => ({ default: module.CheckoutPage })),
 );
 
+const LoaderPage = lazy(() =>
+  import('features/loader').then((module) => ({ default: module.LoaderPage })),
+);
+
 function withSuspense(element: ReactNode) {
   return <Suspense fallback={<div>Loading...</div>}>{element}</Suspense>;
 }
@@ -17,6 +21,7 @@ function withSuspense(element: ReactNode) {
 export const routes = [
   { path: '/', element: withSuspense(<CatalogPage />) },
   { path: '/checkout', element: withSuspense(<CheckoutPage />) },
+  { path: '/loader', element: withSuspense(<LoaderPage />) },
 ] satisfies RouteObject[];
 
 export const router = createBrowserRouter(routes);
