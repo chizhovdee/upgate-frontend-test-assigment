@@ -20,5 +20,7 @@ export function useProductSelect() {
     [setSelectedIds],
   );
 
-  return { selectedIds, toggleSelected };
+  const clearSelected = useCallback(() => setSelectedIds(new Set()), [setSelectedIds]);
+
+  return { selectedIds, toggleSelected, clearSelected };
 }

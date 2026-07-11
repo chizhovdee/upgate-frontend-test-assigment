@@ -7,18 +7,26 @@ import { SearchBar } from './SearchBar';
 import { useSearchProduct } from '../model/useSearchProduct';
 import { CartPanel } from './CartPanel/CartPanel';
 import { useProductSelect } from '../model/useProductSelect';
+import { useCart } from '../model/useCart';
 
 export function CatalogPage() {
   const productsQuery = useProducts();
   const products = productsQuery.data ?? [];
 
   const { searchTerm, setSearchTerm, filteredProducts } = useSearchProduct(products);
-  const { selectedIds, toggleSelected } = useProductSelect();
+  const { selectedIds, toggleSelected, clearSelected } = useProductSelect();
 
   const productColumns = useMemo(
     () => buildProductColumns({ selectedIds, toggleSelected }),
     [selectedIds, toggleSelected],
   );
+
+  const cart = useCart();
+
+  const addSelectedToCart = () => {
+    cart.addMany(Array.from(selectedIds));
+    clearSelected();
+  };
 
   if (productsQuery.isPending) {
     return <div className={styles.status}>Catalog loading...</div>;
@@ -39,6 +47,9 @@ export function CatalogPage() {
     <div className={styles.page}>
       <div className={styles.toolbar}>
         <SearchBar value={searchTerm} onChange={setSearchTerm} />
+        <button type="button" disabled={selectedIds.size === 0} onClick={addSelectedToCart}>
+          Add to Cart ({selectedIds.size})
+        </button>
         <CartPanel />
       </div>
       <div className={styles.gridContainer}>
