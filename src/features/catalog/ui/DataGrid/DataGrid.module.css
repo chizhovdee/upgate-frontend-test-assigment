@@ -35,6 +35,9 @@
 .cell {
   padding: 8px 12px;
   overflow: hidden;
+}
+
+.cellTruncate {
   text-overflow: ellipsis;
   white-space: nowrap;
 }

@@ -15,7 +15,7 @@ export function buildProductColumns(): DataGridColumn<Product>[] {
       width: '56px',
       render: (product) => <img src={product.image} alt="" width={36} height={36} />,
     },
-    { key: 'title', header: 'Название' },
+    { key: 'title', header: 'Название', truncate: true },
     { key: 'category', header: 'Категория', width: '160px' },
     {
       key: 'price',

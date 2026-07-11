@@ -1,11 +1,14 @@
 import { useRef } from 'react';
 import type { ReactNode } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
+import clsx from 'clsx';
+
 import styles from './DataGrid.module.css';
 
 export interface DataGridColumn<T> {
   key: Extract<keyof T, string>;
   header: string;
+  truncate?: boolean;
   width?: string;
   render?: (row: T) => ReactNode;
 }
@@ -57,7 +60,10 @@ export function DataGrid<T extends { id: string | number }>({ data, columns }: D
                 }}
               >
                 {columns.map((column) => (
-                  <div key={column.key} className={styles.cell}>
+                  <div
+                    key={column.key}
+                    className={clsx(styles.cell, { [styles.cellTruncate]: column.truncate })}
+                  >
                     {column.render ? column.render(row) : String(row[column.key])}
                   </div>
                 ))}
