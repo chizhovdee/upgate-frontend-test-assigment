@@ -3,10 +3,13 @@ import { useProducts } from '../api/useProducts';
 import styles from './CatalogPage.module.css';
 import { DataGrid } from './DataGrid';
 import { buildProductColumns } from '../model/productColumns';
+import { SearchBar } from './SearchBar';
+import { useSearchProduct } from '../model/useSearchProduct';
 
 export function CatalogPage() {
   const productsQuery = useProducts();
   const products = productsQuery.data ?? [];
+  const { searchTerm, setSearchTerm, filteredProducts } = useSearchProduct(products);
 
   const productColumns = useMemo(() => buildProductColumns(), []);
 
@@ -27,8 +30,11 @@ export function CatalogPage() {
 
   return (
     <div className={styles.page}>
+      <div className={styles.toolbar}>
+        <SearchBar value={searchTerm} onChange={setSearchTerm} />
+      </div>
       <div className={styles.gridContainer}>
-        <DataGrid data={products} columns={productColumns} />
+        <DataGrid data={filteredProducts} columns={productColumns} />
       </div>
     </div>
   );
