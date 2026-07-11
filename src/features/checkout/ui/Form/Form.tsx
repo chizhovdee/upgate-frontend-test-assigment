@@ -1,5 +1,5 @@
-import { type SubmitEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, type SubmitEvent } from 'react';
+import { useNavigate, useBeforeUnload } from 'react-router-dom';
 import { FormField } from 'shared/ui/FormField';
 import styles from './Form.module.css';
 import { FIELD_NAMES, FIELD_CONFIG } from 'features/checkout/model/constants';
@@ -13,6 +13,16 @@ export function Form() {
   const form = useForm();
   const cart = useCart();
   const submitPayment = useSubmitPayment();
+
+  const [submitSucceeded, setSubmitSucceeded] = useState(false);
+
+  useBeforeUnload((event) => {
+    if (!form.isDirty || submitSucceeded) {
+      return;
+    }
+    event.preventDefault();
+    event.returnValue = '';
+  });
 
   const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -32,6 +42,7 @@ export function Form() {
       },
       {
         onSuccess: () => {
+          setSubmitSucceeded(true);
           cart.clear();
           navigate('/loader', { replace: true });
         },
