@@ -1,3 +1,4 @@
+import { delay } from 'shared/utils/delay';
 import { HttpError } from './HttpError';
 
 type RetryOptions = {
@@ -25,10 +26,4 @@ export async function withRetry<T>(fn: () => Promise<T>, options: RetryOptions =
       await delay(baseDelay * i + jitter);
     }
   }
-}
-
-function delay(ms: number) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
 }

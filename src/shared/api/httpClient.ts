@@ -19,7 +19,7 @@ async function request<T>(path: string, init?: RequestInit) {
 }
 
 export const httpClient = {
-  get: <T>(path: string) => request<T>(path, { method: 'GET' }),
-  post: <T>(path: string, payload: unknown) =>
-    request<T>(path, { method: 'POST', body: JSON.stringify(payload) }),
+  get: <T>(path: string, signal?: AbortSignal) => request<T>(path, { method: 'GET', signal }),
+  post: <T>(path: string, payload: unknown, signal?: AbortSignal) =>
+    request<T>(path, { method: 'POST', body: JSON.stringify(payload), signal }),
 };
