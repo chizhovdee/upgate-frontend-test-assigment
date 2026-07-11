@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from 'react';
-import { createStorageSlot } from 'shared/cache';
+import { createStorageSlot } from 'shared/lib/cache';
 
 interface Cart {
   ids: number[];
