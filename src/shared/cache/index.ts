@@ -1,0 +1,1 @@
+export { createStorageSlot } from './storageSlot';
