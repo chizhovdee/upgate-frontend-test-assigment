@@ -15,7 +15,7 @@ async function request<T>(path: string, init?: RequestInit) {
     throw new HttpError(response.status, response.statusText);
   }
 
-  return response.json() as T;
+  return await response.json() as T;
 }
 
 export const httpClient = {
