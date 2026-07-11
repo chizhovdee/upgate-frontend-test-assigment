@@ -1,0 +1,40 @@
+.grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.header {
+  display: grid;
+  border-bottom: 1px solid #ddd;
+  font-weight: 600;
+  background: #fafafa;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.headerCell {
+  padding: 8px 12px;
+}
+
+.scrollContainer {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  position: relative;
+}
+
+.row {
+  display: grid;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.cell {
+  padding: 8px 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
