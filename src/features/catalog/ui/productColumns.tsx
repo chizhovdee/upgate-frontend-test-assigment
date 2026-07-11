@@ -1,13 +1,28 @@
-import { DataGridColumn } from '../ui/DataGrid/DataGrid';
-import { Product } from './types';
+import type { DataGridColumn } from '../ui/DataGrid/DataGrid';
+import type { Product } from '../model/types';
 
-export function buildProductColumns(): DataGridColumn<Product>[] {
+interface ProductColumnsOption {
+  selectedIds: Set<number>;
+  toggleSelected: (id: number) => void;
+}
+
+export function buildProductColumns({
+  selectedIds,
+  toggleSelected,
+}: ProductColumnsOption): DataGridColumn<Product>[] {
   return [
     {
       key: 'id',
       header: '',
       width: '40px',
-      render: (product) => <input type="checkbox" aria-label={`Выбрать ${product.title}`} />,
+      render: (product) => (
+        <input
+          type="checkbox"
+          aria-label={`Выбрать ${product.title}`}
+          checked={selectedIds.has(product.id)}
+          onChange={() => toggleSelected(product.id)}
+        />
+      ),
     },
     {
       key: 'image',

@@ -6,13 +6,19 @@ import { buildProductColumns } from './productColumns';
 import { SearchBar } from './SearchBar';
 import { useSearchProduct } from '../model/useSearchProduct';
 import { CartPanel } from './CartPanel/CartPanel';
+import { useProductSelect } from '../model/useProductSelect';
 
 export function CatalogPage() {
   const productsQuery = useProducts();
   const products = productsQuery.data ?? [];
-  const { searchTerm, setSearchTerm, filteredProducts } = useSearchProduct(products);
 
-  const productColumns = useMemo(() => buildProductColumns(), []);
+  const { searchTerm, setSearchTerm, filteredProducts } = useSearchProduct(products);
+  const { selectedIds, toggleSelected } = useProductSelect();
+
+  const productColumns = useMemo(
+    () => buildProductColumns({ selectedIds, toggleSelected }),
+    [selectedIds, toggleSelected],
+  );
 
   if (productsQuery.isPending) {
     return <div className={styles.status}>Catalog loading...</div>;
