@@ -2,6 +2,7 @@ import { useSyncExternalStore } from 'react';
 import { createStorageSlot } from 'shared/lib/cache';
 
 interface Cart {
+  isEmpty: boolean;
   ids: number[];
   add: (id: number) => void;
   addMany: (ids: number[]) => void;
@@ -14,7 +15,7 @@ const cartSlot = createStorageSlot<number[]>('cart', []);
 export function useCart(): Cart {
   const ids = useSyncExternalStore(cartSlot.subscribe, cartSlot.get, () => []);
 
-  return { ids, add, addMany, remove, clear };
+  return { ids, add, addMany, remove, clear, isEmpty: ids.length === 0 };
 }
 
 function add(id: number) {

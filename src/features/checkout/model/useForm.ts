@@ -23,7 +23,7 @@ interface Form {
   setTouched: (name: FieldName) => void;
   getError: (field: FieldName) => string | null;
   shouldShowError: (name: FieldName) => boolean;
-  submit: () => void;
+  checkSubmit: () => void;
 }
 
 export function useForm(): Form {
@@ -56,6 +56,6 @@ export function useForm(): Form {
     getError: (field: FieldName) => errors[field],
     shouldShowError: (name: FieldName) =>
       (fields[name].touched || submitAttempted) && errors[name] !== null,
-    submit: () => setSubmitAttempted(true),
+    checkSubmit: () => setSubmitAttempted(true),
   };
 }
