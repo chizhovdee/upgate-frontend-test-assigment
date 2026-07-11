@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useProducts } from '../api/useProducts';
 import styles from './CatalogPage.module.css';
 import { DataGrid } from './DataGrid';
-import { buildProductColumns } from '../model/productColumns';
+import { buildProductColumns } from './productColumns';
 import { SearchBar } from './SearchBar';
 import { useSearchProduct } from '../model/useSearchProduct';
 
