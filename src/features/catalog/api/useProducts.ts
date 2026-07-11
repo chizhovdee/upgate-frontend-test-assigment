@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { httpClient } from 'shared/api';
+import { httpClient, withRetry } from 'shared/api';
 import { Product } from '../model/types';
-import { withRetry } from 'shared/api/retry';
 
 export function useProducts() {
   return useQuery({
