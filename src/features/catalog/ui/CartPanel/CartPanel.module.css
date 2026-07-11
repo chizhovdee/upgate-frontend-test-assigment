@@ -1,0 +1,10 @@
+.panel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.count {
+  font-weight: 600;
+}

@@ -5,6 +5,7 @@ import { DataGrid } from './DataGrid';
 import { buildProductColumns } from './productColumns';
 import { SearchBar } from './SearchBar';
 import { useSearchProduct } from '../model/useSearchProduct';
+import { CartPanel } from './CartPanel/CartPanel';
 
 export function CatalogPage() {
   const productsQuery = useProducts();
@@ -32,6 +33,7 @@ export function CatalogPage() {
     <div className={styles.page}>
       <div className={styles.toolbar}>
         <SearchBar value={searchTerm} onChange={setSearchTerm} />
+        <CartPanel />
       </div>
       <div className={styles.gridContainer}>
         <DataGrid data={filteredProducts} columns={productColumns} />
