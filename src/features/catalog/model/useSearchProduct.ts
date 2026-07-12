@@ -11,7 +11,7 @@ export function useSearchProduct(products: Product[]) {
       return products;
     }
 
-    return products.filter((p) => p.title.toLowerCase().includes(deferredSearchTerm));
+    return products.filter((p) => p.title.toLowerCase().includes(normalized));
   }, [deferredSearchTerm, products]);
 
   return { searchTerm, setSearchTerm, filteredProducts };

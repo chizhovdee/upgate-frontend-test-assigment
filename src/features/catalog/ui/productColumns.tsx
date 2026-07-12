@@ -18,7 +18,7 @@ export function buildProductColumns({
       render: (product) => (
         <input
           type="checkbox"
-          aria-label={`Выбрать ${product.title}`}
+          aria-label={`Select ${product.title}`}
           checked={selectedIds.has(product.id)}
           onChange={() => toggleSelected(product.id)}
         />
