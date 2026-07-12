@@ -6,7 +6,7 @@ import { buildProductColumns } from './productColumns';
 import { SearchBar } from './SearchBar';
 import { useSearchProduct } from '../model/useSearchProduct';
 import { CartPanel } from './CartPanel/CartPanel';
-import { useProductSelect } from '../model/useProductSelect';
+import { useSelectProduct } from '../model/useSelectProduct';
 import { useCart } from '../model/useCart';
 
 export function CatalogPage() {
@@ -14,7 +14,7 @@ export function CatalogPage() {
   const products = productsQuery.data ?? [];
 
   const { searchTerm, setSearchTerm, filteredProducts } = useSearchProduct(products);
-  const { selectedIds, toggleSelected, clearSelected } = useProductSelect();
+  const { selectedIds, toggleSelected, clearSelected } = useSelectProduct();
 
   const productColumns = useMemo(
     () => buildProductColumns({ selectedIds, toggleSelected }),

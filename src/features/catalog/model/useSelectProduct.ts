@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-export function useProductSelect() {
+export function useSelectProduct() {
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
 
   const toggleSelected = useCallback(
