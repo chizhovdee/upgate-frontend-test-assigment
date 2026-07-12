@@ -11,12 +11,7 @@ export function usePaymentPolling() {
   const [status, setStatus] = useState<PollingStatus>('polling');
   const controllerRef = useRef<AbortController | null>(null);
 
-  const run = useCallback(async () => {
-    const controller = controllerRef.current;
-    if (!controller) {
-      return;
-    }
-
+  const run = useCallback(async (controller: AbortController) => {
     while (!controller.signal.aborted) {
       try {
         const response = await withRetry(() =>
@@ -39,22 +34,26 @@ export function usePaymentPolling() {
     }
   }, []);
 
-  const retry = useCallback(() => {
+  const retry = () => {
     setStatus('polling');
-    controllerRef.current?.abort();
-    controllerRef.current = new AbortController();
 
-    run();
-  }, [run]);
+    controllerRef.current?.abort();
+
+    const controller = new AbortController();
+    controllerRef.current = controller;
+
+    run(controller);
+  };
 
   useEffect(() => {
-    controllerRef.current = new AbortController();
+    const controller = new AbortController();
+    controllerRef.current = controller;
 
     (async () => {
-      await run();
+      await run(controller);
     })();
 
-    return () => controllerRef.current?.abort();
+    return () => controller.abort();
   }, [run]);
 
   return { status, retry };
