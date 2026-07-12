@@ -7,6 +7,10 @@
 роутингом). Бэкенд уже готов (`server.js`), его менять не нужно — только
 использовать.
 
+## Демо
+
+[Демо-видео](https://drive.google.com/file/d/1jjfRAWLqicTMQs-QR8lZCiZZe8zZMzyS/view?usp=sharing)
+
 ## Запуск бэкенда
 
 ```bash
