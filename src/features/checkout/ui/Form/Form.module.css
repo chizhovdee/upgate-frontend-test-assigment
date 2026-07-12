@@ -8,6 +8,6 @@
 }
 
 .formError {
-  color: #d33;
+  color: var(--color-danger);
   font-size: 14px;
 }

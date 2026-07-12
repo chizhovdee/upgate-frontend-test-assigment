@@ -11,16 +11,17 @@
 
 .input {
   padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
   font-size: 14px;
+  transition: border-color var(--transition);
 }
 
 .inputError {
-  border-color: #d33;
+  border-color: var(--color-danger);
 }
 
 .error {
-  color: #d33;
+  color: var(--color-danger);
   font-size: 12px;
 }

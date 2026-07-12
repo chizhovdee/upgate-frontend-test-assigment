@@ -5,6 +5,8 @@
   padding: 16px;
   box-sizing: border-box;
   gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .toolbar {
@@ -16,7 +18,7 @@
 .gridContainer {
   flex: 1;
   min-height: 0;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border-light);
 }
 
 .status {
