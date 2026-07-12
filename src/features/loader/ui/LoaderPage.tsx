@@ -7,9 +7,9 @@ export function LoaderPage() {
   if (status === 'error') {
     return (
       <div className={styles.page}>
-        <p className={styles.message}>Не удалось получить статус оплаты.</p>
+        <p className={styles.message}>Unable to retrieve payment status.</p>
         <button type="button" onClick={retry}>
-          Повторить
+          Repeat
         </button>
       </div>
     );
@@ -18,14 +18,14 @@ export function LoaderPage() {
   if (status === 'success') {
     return (
       <div className={styles.page}>
-        <p className={styles.message}>Покупка была успешной</p>
+        <p className={styles.message}>The purchase was successful</p>
       </div>
     );
   }
 
   return (
     <div className={styles.page}>
-      <p className={styles.message}>Ожидание подтверждения оплаты...</p>
+      <p className={styles.message}>Waiting for payment confirmation...</p>
     </div>
   );
 }
