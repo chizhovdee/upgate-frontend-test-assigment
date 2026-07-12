@@ -19,6 +19,15 @@ npm run server
 
 Сервер поднимется на `http://localhost:3000`.
 
+## Запуск фронтенда
+
+```bash
+npm install
+npm run dev
+```
+
+Приложение будет доступно на `http://localhost:5173`.
+
 ### API
 
 | Метод | Эндпоинт    | Описание                                               |
