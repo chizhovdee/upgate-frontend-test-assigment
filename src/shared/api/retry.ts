@@ -1,4 +1,4 @@
-import { delay } from 'shared/utils/delay';
+import { delay } from 'shared/lib/delay';
 import { HttpError } from './HttpError';
 
 type RetryOptions = {

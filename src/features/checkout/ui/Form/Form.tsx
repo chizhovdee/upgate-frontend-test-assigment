@@ -7,7 +7,7 @@ import { useForm } from 'features/checkout/model/useForm';
 import { useSubmitPayment } from 'features/checkout/api/useSubmitPayment';
 import { useCart } from 'features/catalog/model/useCart';
 import { normalizeCardNumber } from 'shared/lib/validators';
-import { useBeforeunload } from 'shared/hooks/useBeforeunload';
+import { useBeforeunload } from 'shared/lib/hooks/useBeforeunload';
 
 export function Form() {
   const navigate = useNavigate();

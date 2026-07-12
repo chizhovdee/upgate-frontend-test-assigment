@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { httpClient, withRetry } from 'shared/api';
-import { delay } from 'shared/utils/delay';
+import { delay } from 'shared/lib/delay';
 
 type PollingStatus = 'polling' | 'success' | 'error';
 
