@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import type { ReactNode } from 'react';
 import { createBrowserRouter, type RouteObject } from 'react-router-dom';
+import { PageLoader } from 'shared/ui/PageLoader';
 
 const CatalogPage = lazy(() =>
   import('features/catalog').then((module) => ({ default: module.CatalogPage })),
@@ -15,7 +16,7 @@ const LoaderPage = lazy(() =>
 );
 
 function withSuspense(element: ReactNode) {
-  return <Suspense fallback={<div>Loading...</div>}>{element}</Suspense>;
+  return <Suspense fallback={<PageLoader />}>{element}</Suspense>;
 }
 
 export const routes = [

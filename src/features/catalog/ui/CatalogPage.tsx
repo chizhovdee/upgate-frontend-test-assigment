@@ -29,16 +29,22 @@ export function CatalogPage() {
   };
 
   if (productsQuery.isPending) {
-    return <div className={styles.status}>Catalog loading...</div>;
+    return (
+      <div className={styles.page}>
+        <div className={styles.status}>Catalog loading...</div>
+      </div>
+    );
   }
 
   if (productsQuery.isError) {
     return (
-      <div className={styles.status}>
-        <p>Failed to load the catalog.</p>
-        <button type="button" onClick={() => productsQuery.refetch()}>
-          Repeat
-        </button>
+      <div className={styles.page}>
+        <div className={styles.status}>
+          <p>Failed to load the catalog.</p>
+          <button type="button" onClick={() => productsQuery.refetch()}>
+            Repeat
+          </button>
+        </div>
       </div>
     );
   }
